@@ -207,13 +207,13 @@ Request Details :
 | --- | --- | --- | ---|
 |Handled in Python wrapper|uid*||Logged in User Id|
 |Handled in Python wrapper|actid*||Login users account ID|
-|exchange|exch*|NSE  / NFO / BSE / MCX|Exchange (Select from ‘exarr’ Array provided in User Details response)|
-|tradingsymbol|tsym*||Unique id of contract on which order to be placed. (use url encoding to avoid special char error for symbols like M&M)|
-|quantity|qty*||Order Quantity |
+|exchange|exch*|NSE  / NFO / BSE / BFO / MCX|Exchange (Select from ‘exarr’ Array provided in User Details response)|
+|tradingsymbol|tsym*|RELIANCE-EQ / L&TFH29SEP22P97 / USDINR25NOV22C76 / CRUDEOIL16NOV22P5400 / WHIRLPOOL|Unique id of contract on which order to be placed. (use url encoding to avoid special char error for symbols like M&M)|
+|quantity|qty*|RELIANCE-EQ:-1 / NIFTY:-50 / BANKNIFTY:-25|Order Quantity |
 |price|prc*||Order Price|
 |trigger_price|trgprc||Only to be sent in case of SL / SL-M order.|
 |discloseqty|dscqty||Disclosed quantity (Max 10% for NSE, and 50% for MCX)|
-|product_type|prd*|C / M / H|Product name (Select from ‘prarr’ Array provided in User Details response, and if same is allowed for selected, exchange. Show product display name, for user to select, and send corresponding prd in API call)|
+|product_type|prd*|C / M / I / B / H|Product name (Select from ‘prarr’ Array provided in User Details response, and if same is allowed for selected, exchange. Show product display name, for user to select, and send corresponding prd in API call) "C" For CNC, "M" FOR NRML, "I" FOR MIS, "B" FOR BRACKET ORDER, "H" FOR COVER ORDER|
 |buy_or_sell|trantype*|B / S|B -> BUY, S -> SELL|
 |price_type|prctyp*|LMT / MKT  / SL-LMT / SL-MKT / DS / 2L / 3L||||
 |retention|ret*|DAY / EOS / IOC |Retention type (Show options as per allowed exchanges) |
@@ -594,8 +594,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065715",
-       "uid": "GURURAJ",
-       "actid": "GURURAJ",
+       "uid": "IN003",
+       "actid": "IN003",
        "exch": "NSE",
        "prctyp": "LMT",
        "ret": "DAY",
@@ -621,8 +621,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "GURURAJ",
-       "actid": "GURURAJ",
+       "uid": "IN003",
+       "actid": "IN003",
        "exch": "NSE",
        "prctyp": "LMT",
        "ret": "DAY",
@@ -716,8 +716,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "DEMO1",
-       "actid": "DEMO1",
+       "uid": "IN003",
+       "actid": "IN003",
        "exch": "NSE",
        "tsym": "ACCELYA-EQ",
        "qty": "180",
@@ -743,8 +743,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "DEMO1",
-       "actid": "DEMO1",
+       "uid": "IN003",
+       "actid": "IN003",
        "exch": "NSE",
        "tsym": "ACCELYA-EQ",
        "qty": "180",
@@ -768,8 +768,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "DEMO1",
-       "actid": "DEMO1",
+       "uid": "IN003",
+       "actid": "IN003",
        "exch": "NSE",
        "tsym": "ACCELYA-EQ",
        "qty": "180",
@@ -791,8 +791,8 @@ Sample Success Output :
    {
        "stat": "Ok",
        "norenordno": "20121300065716",
-       "uid": "DEMO1",
-       "actid": "DEMO1",
+       "uid": "IN003",
+       "actid": "IN003",
        "exch": "NSE",
        "tsym": "ACCELYA-EQ",
        "qty": "180",
@@ -991,8 +991,8 @@ Sample Success Response :
 [
      {
 "stat":"Ok",
-"uid":"POORNA",
-"actid":"POORNA",
+"uid":"IN003",
+"actid":"IN003",
 "exch":"NSE",
 "tsym":"ACC-EQ",
 "prarr":"C",
